@@ -1,10 +1,10 @@
 import React from 'react';
-
+{/* Esta Funcion contiene un titulo h2 junto a otras etiquetas para incorporar imagenes su funcion es incorporar una imagen con margenes y una descripcion del signo luego se exporta para ser llamada en otro lado el cual es AppRouter */}
 export const SignosZ = () => {
     return (
     <div>
         <br />
-      {/* Aries */}
+        {/* Aries */}
         <h2>Aries</h2>
         <img
         src="/imgs/aries.jpg"
@@ -15,7 +15,7 @@ export const SignosZ = () => {
         El primer signo del zodiaco se asocia con la energía, la iniciativa y la aventura.
         </p>
 
-      {/* Tauro */}
+        {/* Tauro */}
         <h2>Tauro</h2>
         <img
         src="/imgs/tauro.jpg"
@@ -26,7 +26,7 @@ export const SignosZ = () => {
         El segundo signo representa la estabilidad, la lealtad, la paciencia y la perseverancia.
         </p>
 
-      {/* Géminis */}
+        {/* Géminis */}
         <h2>Géminis</h2>
         <img
         src="/imgs/geminis.jpg"
@@ -37,7 +37,7 @@ export const SignosZ = () => {
         El tercer signo se relaciona con la comunicación, la curiosidad y la versatilidad.
         </p>
 
-      {/* Cáncer */}
+        {/* Cáncer */}
         <h2>Cáncer</h2>
         <img
         src="/imgs/cancer.jpg"
@@ -48,7 +48,7 @@ export const SignosZ = () => {
         El cuarto signo representa la sensibilidad, la intuición y la protección emocional.
         </p>
 
-      {/* Leo */}
+        {/* Leo */}
         <h2>Leo</h2>
         <img
         src="/imgs/leon.jpg"
@@ -59,7 +59,7 @@ export const SignosZ = () => {
         El quinto signo se relaciona con la creatividad, el liderazgo y la confianza.
         </p>
 
-      {/* Virgo */}
+        {/* Virgo */}
         <h2>Virgo</h2>
         <img
         src="/imgs/virgo.jpg"
@@ -70,7 +70,7 @@ export const SignosZ = () => {
         El sexto signo representa la organización, la atención al detalle y la eficiencia.
         </p>
 
-      {/* Libra */}
+        {/* Libra */}
         <h2>Libra</h2>
         <img
         src="/imgs/libra.jpg"
@@ -81,7 +81,7 @@ export const SignosZ = () => {
         El séptimo signo se asocia con la armonía, la diplomacia y el equilibrio.
         </p>
 
-      {/* Escorpio */}
+        {/* Escorpio */}
         <h2>Escorpio</h2>
         <img
         src="/imgs/escorpion.jpg"
@@ -92,7 +92,7 @@ export const SignosZ = () => {
         El octavo signo se relaciona con la intensidad, la pasión y la transformación personal.
         </p>
 
-      {/* Sagitario */}
+        {/* Sagitario */}
         <h2>Sagitario</h2>
         <img
         src="/imgs/sagitario.jpg"
@@ -103,7 +103,7 @@ export const SignosZ = () => {
         El noveno signo representa la libertad, la aventura y el optimismo.
         </p>
 
-      {/* Capricornio */}
+        {/* Capricornio */}
         <h2>Capricornio</h2>
         <img
         src="/imgs/capricornio.jpg"
@@ -114,7 +114,7 @@ export const SignosZ = () => {
         El décimo signo se asocia con la ambición, la responsabilidad y la disciplina.
         </p>
 
-      {/* Acuario */}
+        {/* Acuario */}
         <h2>Acuario</h2>
         <img
         src="/imgs/acuario.jpg"
@@ -125,7 +125,7 @@ export const SignosZ = () => {
         El undécimo signo representa la originalidad, la independencia y la humanidad.
         </p>
 
-      {/* Piscis */}
+        {/* Piscis */}
         <h2>Piscis</h2>
         <img
         src="/imgs/piscis.jpg"

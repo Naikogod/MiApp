@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { obtenerPersona, eliminarPersona } from '../Firebase/Promesas';
 
+// Definir el componente funcional Eliminar
 export const Eliminar = () => {
+    // Obtener los parámetros de la URL utilizando el hook useParams()
     const params = useParams();
+    // Definir los estados locales para los campos del formulario y sus respectivos setters
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [edad, setEdad] = useState('');
@@ -13,10 +16,12 @@ export const Eliminar = () => {
     const [ciudad, setCiudad] = useState('');
     const [idPersona, setIdPersona] = useState('');
 
+    // Utilizar el hook useEffect para cargar los datos de una persona existente (si se proporciona un idPersona)
     useEffect(() => {
         if (params.idPersona != undefined) {
             obtenerPersona(params.idPersona).then((v) => {
                 if (v != undefined && v.idPersona != undefined) {
+                    // Cargar los datos obtenidos de la persona en los estados locales correspondientes
                     setNombre(v.nombre);
                     setApellido(v.apellido);
                     setEdad('' + v.edad);
@@ -25,15 +30,21 @@ export const Eliminar = () => {
                     setTelefono('' + v.telefono);
                     setPais(v.pais);
                     setCiudad(v.ciudad);
-                    }
+                }
             });
         }
+        // Este useEffect se ejecutará solo una vez (cuando el componente se monta)
+        // ya que el arreglo de dependencias está vacío ([])
     }, []);
 
+    // Función para eliminar el registro de la persona
     const eliminar = () => {
+        // Mostrar una ventana de confirmación para verificar si el usuario realmente desea eliminar el registro
         const confirmacion = window.confirm('¿Estás seguro de que deseas eliminar este registro?');
         if (confirmacion) {
+            // Llamar a la función eliminarPersona para eliminar el registro de la persona en la base de datos
             eliminarPersona(idPersona).then(() => {
+                // Mostrar un mensaje de alerta indicando que el registro se eliminó con éxito
                 alert('Se eliminó con éxito');
             });
         }
