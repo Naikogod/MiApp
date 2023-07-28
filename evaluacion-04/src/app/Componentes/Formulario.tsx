@@ -1,6 +1,5 @@
-'use client'
 // Importar las dependencias necesarias
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Persona } from '../Interfaces/DatosFormulario';
 import { registrarPersona } from '../Firebase/Promesas';
 
@@ -16,15 +15,36 @@ export const Formulario = () => {
   const [ciudad, setCiudad] = useState('');
   const [aceptarTerminos, setAceptarTerminos] = useState(false);
   const [errorNombre, setErrorNombre] = useState('');
+  const [errorApellido, setErrorApellido] = useState('');
+
+  // Función para validar los campos de nombre y apellido
+  function validarCampos() {
+    let isValid = true;
+
+    // Validar campo de nombre
+    if (nombre.trim() === '') {
+      setErrorNombre('No puede estar vacío.');
+      isValid = false;
+    } else {
+      setErrorNombre('');
+    }
+
+    // Validar campo de apellido
+    if (apellido.trim() === '') {
+      setErrorApellido('No puede estar vacío.');
+      isValid = false;
+    } else {
+      setErrorApellido('');
+    }
+
+    return isValid;
+  }
 
   // Función para registrar la persona
   const registrar = () => {
-    // Validar el campo del nombre antes de registrar
-    if (nombre.trim() === '') {
-      setErrorNombre('No valen espacios en blanco');
-    } else {
-      // Eliminar espacios en blanco al inicio y al final del nombre y luego registrar
-      setNombre(nombre.trim());
+    // Validar los campos antes de registrar
+    if (!validarCampos()) {
+      return;
     }
 
     // Crear un objeto de tipo Persona con los datos ingresados en el formulario
@@ -48,17 +68,7 @@ export const Formulario = () => {
     console.log(edad);
 
     // Mostrar un mensaje de alerta indicando que el registro se realizó exitosamente
-    alert('Registro Realizado Exitosamente Don/ña:' + nombre + ' ' + apellido);
-  };
-
-  // Función para validar el campo del nombre y mostrar el error si es necesario
-  const validarNombre = (valor: string) => {
-    setNombre(valor);
-    if (valor.length < 3) {
-      setErrorNombre('Debe tener más de 3 letras');
-    } else {
-      setErrorNombre('');
-    }
+    alert('Registro Realizado Exitosamente Don/ña: ' + nombre + ' ' + apellido);
   };
 
   // Manejador de cambios para el checkbox "Acepto los términos y condiciones"
@@ -73,12 +83,16 @@ export const Formulario = () => {
       {/* Campos del formulario */}
       <label>Nombre: </label>
       <br />
-      <input type="text" onChange={(e) => validarNombre(e.target.value)} value={nombre} />
+      <input type="text" onChange={(e) => setNombre(e.target.value)} value={nombre} />
+      {/* Mostrar mensaje de error si existe */}
+      {errorNombre && <p style={{ color: 'red' }}>{errorNombre}</p>}
       <br />
 
       <label>Apellido: </label>
       <br />
       <input type="text" onChange={(e) => setApellido(e.target.value)} value={apellido} />
+      {/* Mostrar mensaje de error si existe */}
+      {errorApellido && <p style={{ color: 'red' }}>{errorApellido}</p>}
       <br />
 
       <label>Edad: </label>
@@ -106,9 +120,6 @@ export const Formulario = () => {
       <input type="text" onChange={(e) => setCiudad(e.target.value)} value={ciudad} />
       <br />
 
-      {/* Mostrar mensaje de error si existe */}
-      {errorNombre && <p style={{ color: 'red' }}>{errorNombre}</p>}
-
       {/* Checkbox "Acepto los términos y condiciones" */}
       <div>
         <input type="checkbox" checked={aceptarTerminos} onChange={handleCheckboxChange} />
@@ -120,4 +131,3 @@ export const Formulario = () => {
     </form>
   );
 };
-

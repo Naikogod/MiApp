@@ -58,7 +58,7 @@ export const Actualizar = () => {
     // Llamar a la función actualizarPersona para actualizar los datos en la base de datos
     actualizarPersona(idPersona, p).then(() => {
       // Mostrar un mensaje de alerta indicando que la actualización fue exitosa
-      alert("Actualizacion Exitosa Don/ña:" + nombre + " " + apellido);
+      alert("Actualizacion Exitosa Don/ña: " + nombre + " " + apellido);
     });
 
     // Mostrar los datos ingresados en la consola (esto puede ser útil para propósitos de depuración)

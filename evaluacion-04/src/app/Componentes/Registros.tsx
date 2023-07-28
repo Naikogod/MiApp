@@ -50,7 +50,7 @@ export const Registros = () => {
     return (
     <div className="registros-container">
         {/* Título */}
-        <h1>Registros</h1>
+        <h1><br></br>Registros<br></br></h1>
       {/* Tabla que muestra los datos de las personas */}
         <table className="registros-table">
             <thead>
