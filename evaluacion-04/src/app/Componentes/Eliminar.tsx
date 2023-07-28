@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Persona } from '../Interfaces/DatosFormulario';
 import { obtenerPersona, eliminarPersona } from '../Firebase/Promesas';
 
 export const Eliminar = () => {
@@ -48,7 +47,6 @@ export const Eliminar = () => {
         value={nombre}
         disabled // Campo bloqueado
         /><br/>
-        <span>{nombre}</span><br/>
 
         <label>Apellido: </label><br/>
         <input type="text"

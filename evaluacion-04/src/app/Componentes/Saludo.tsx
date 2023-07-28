@@ -6,6 +6,6 @@ interface Props{
 
 export const Saludo = (props:Props) => {
   return (
-    <div>Saludo {props.nombre} {props.apellido}</div>
+    <div><br></br>Bienvenido a Astro Fans Para mas Detalles Registrese o simplemente navegue por las Estrellas!!</div>
   )
 }

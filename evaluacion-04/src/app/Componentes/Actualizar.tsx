@@ -12,7 +12,7 @@ export const Actualizar = () => {
     const [telefono, setTelefono] = useState("")
     const [pais, setPais] = useState("")
     const [ciudad, setCiudad] = useState("")
-    const [errorNombre, setErrorNombre] = useState("")
+    const [aceptarTerminos, setAceptarTerminos] = useState(false);
     const [idPersona,setIdPersona] = useState("")
   useEffect(()=>{
     if(params.idPersona!=undefined){
@@ -26,6 +26,7 @@ export const Actualizar = () => {
             setTelefono(""+v.telefono)
             setPais(v.pais)
             setCiudad(v.ciudad)
+            setAceptarTerminos(v.aceptarTerminos)
         }
       })
     
@@ -36,11 +37,6 @@ export const Actualizar = () => {
   
   
   const actualizar = ()=>{
-    if(nombre.trim()==""){
-      setErrorNombre("No valen espacios en blanco")
-    }else{
-      setNombre(nombre.trim())
-    }
     //Asuman que se valido todo
     const p:Persona = {
         nombre,
@@ -50,43 +46,31 @@ export const Actualizar = () => {
         telefono:parseInt(telefono),
         pais,
         ciudad,
+        aceptarTerminos,
     }
     //actualizar
     actualizarPersona(idPersona,p).then(()=>{
-        alert("Se actualizo con exito")
+      alert("Actualizacion Exitosa Don/ña:"+nombre+" "+apellido);
     })
     //registrarPersona(p)
     console.log(nombre);
     console.log(apellido);
     console.log(edad);
-    alert("Bienvenido "+nombre+" "+apellido);
   }
 
-
-  const validarNombre = (valor:string)=>{
-    setNombre(valor);
-    if(valor.length<3){
-      setErrorNombre("Debe tener mas de 3 letras")
-    }
-    else{
-      setErrorNombre("")
-    }
-  }
+  // Manejador de cambios para el checkbox
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAceptarTerminos(e.target.checked);
+  };
 
   return (
     <form>
         <label>Nombre: </label><br/>
         <input type="text" 
-          onChange={(e)=>validarNombre(e.target.value)}
+          onChange={(e)=>setNombre(e.target.value)}
           value={nombre}
           /><br/>
-        <span>{errorNombre}</span><br/>
-        <label>Apellido: </label><br/>
-        <input type="text"
-          onChange={(e)=>setApellido(e.target.value)}
-          value={apellido}
-        /><br/>
-        
+
         <label>Edad: </label><br/>
         <input type="number"
           onChange={(e)=>setEdad(e.target.value)}
@@ -116,7 +100,11 @@ export const Actualizar = () => {
           onChange={(e)=>setCiudad(e.target.value)}
           value={ciudad}
           /><br/>
-
+        
+        <div>
+        <input type="checkbox" checked={aceptarTerminos} onChange={handleCheckboxChange} />
+        <label htmlFor="aceptarTerminos">Acepto los términos y condiciones</label>
+        </div>
         <button type='button' onClick={actualizar}>Actualizar</button>
     </form>
   )

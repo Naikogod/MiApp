@@ -11,6 +11,7 @@ export const Formulario = () => {
   const [telefono, setTelefono] = useState("")
   const [pais, setPais] = useState("")
   const [ciudad, setCiudad] = useState("")
+  const [aceptarTerminos, setAceptarTerminos] = useState(false);
   const [errorNombre, setErrorNombre] = useState("")
 
   
@@ -33,12 +34,13 @@ export const Formulario = () => {
         telefono:parseInt(telefono),
         pais,
         ciudad,
+        aceptarTerminos,
     }
     registrarPersona(p)
     console.log(nombre);
     console.log(apellido);
     console.log(edad);
-    alert("Bienvenido "+nombre+" "+apellido);
+    alert("Registro Realizado Exitosamente Don/ña:"+nombre+" "+apellido);
   }
   const validarNombre = (valor:string)=>{
     setNombre(valor);
@@ -49,6 +51,10 @@ export const Formulario = () => {
       setErrorNombre("")
     }
   }
+  // Manejador de cambios para el checkbox
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAceptarTerminos(e.target.checked);
+  };
 
   return (
     <form>
@@ -57,12 +63,6 @@ export const Formulario = () => {
           onChange={(e)=>validarNombre(e.target.value)}
           value={nombre}
           /><br/>
-        <span>{errorNombre}</span><br/>
-        <label>Apellido: </label><br/>
-        <input type="text"
-          onChange={(e)=>setApellido(e.target.value)}
-          value={apellido}
-        /><br/>
 
         <label>Edad: </label><br/>
         <input type="number"
@@ -93,7 +93,11 @@ export const Formulario = () => {
           onChange={(e)=>setCiudad(e.target.value)}
           value={ciudad}
           /><br/>
-
+        
+        <div>
+        <input type="checkbox" checked={aceptarTerminos} onChange={handleCheckboxChange} />
+        <label htmlFor="aceptarTerminos">Acepto los términos y condiciones</label>
+        </div>
         <button type='button' onClick={registrar}>Registrar</button>
     </form>
   )

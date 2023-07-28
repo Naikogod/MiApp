@@ -7,4 +7,5 @@ export interface Persona{
     telefono:number,
     pais:string,
     ciudad:string,
+    aceptarTerminos: boolean;
 }

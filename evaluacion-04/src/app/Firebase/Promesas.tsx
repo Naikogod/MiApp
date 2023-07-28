@@ -27,6 +27,7 @@ export const obtenerPersonas = async()=>{
             telefono:parseInt(d.data().telefono),
             pais:d.data().pais,
             ciudad:d.data().ciudad,
+            aceptarTerminos:d.data().aceptarTerminos,
         } 
         personas.push(p)
     })
@@ -46,6 +47,7 @@ export const obtenerPersona = async(idPersona:string)=>{
             telefono:docSnap.data().telefono,
             pais:docSnap.data().pais,
             ciudad:docSnap.data().ciudad,
+            aceptarTerminos:docSnap.data().aceptarTerminos
         }
         return p
     } else {
